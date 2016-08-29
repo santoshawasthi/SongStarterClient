@@ -1,0 +1,61 @@
+<div class="container">
+	<div class="header row">
+		<div class="col-xs-offset-5">Song</div>
+	</div>
+	<div>
+		<form name="editSong" class="" form-manager ng-submit="submitForm()">
+			<input type="hidden" ng-model="song.songid" id="songid" value="{{song.songid}}"/>
+			<div class="row">
+
+				<label class="col-xs-2">Album Name: </label><label
+					class="col-xs-offset-1" ng-model="song.albumid">{{albumName}}</label>
+			</div>
+			<div class="row row-margin">
+				<label class="col-xs-2">Title</label> <input ng-model="song.title"
+					class="col-xs-offset-1" style="width: 70%;" type="text"
+					name="title" id="songTitle" placeholder="Song" />
+			</div>
+
+			<div class="row row-margin">
+				<label class="col-xs-2">Track Number</label> <input
+					ng-model="song.tracknumber" class="col-xs-offset-1" type="text"
+					style="width: 70%;" name="Tracknumber" id="songTrackNumber"
+					placeholder="TrackNumber" />
+			</div>
+
+			<div class="row row-margin">
+				<label class="col-xs-2">Length</label> <input ng-model="song.length"
+					class="col-xs-offset-1" type="text" style="width: 70%;"
+					name="length" id="songLength" placeholder="Length in sec" />
+			</div>
+
+			<div class="row row-margin">
+				<label class="col-xs-2">Genre</label> <input ng-model="song.genre"
+					class="col-xs-offset-1" type="text" style="width: 70%;"
+					name="genre" id="songGenre" placeholder="Genre" />
+			</div>
+
+			<div class="row row-margin">
+				<label class="col-xs-2">DateCreated</label> <input
+					ng-model="song.datecreated" class="col-xs-offset-1"
+					style="width: 70%;" type="text" name="genre" id="songDateCreated"
+					placeholder="yyyy-MM-dd" />
+			</div>
+
+			<div class="row row-margin">
+				<label class="col-xs-2">DateModified</label> <input
+					ng-model="song.datemodified" class="col-xs-offset-1"
+					style="width: 70%;" type="text" name="genre" id="songDateModified"
+					placeholder="yyyy-MM-dd" />
+
+				<div class="padding container row-margin">
+					<div class="row">
+						<button type="submit" ng-click="submit()"
+							style="margin-left: 50%;" class="btn btn-primary"
+							ng-disabled="faleComigoForm1.$invalid">Save</button>
+
+					</div>
+				</div>
+		</form>
+	</div>
+</div>

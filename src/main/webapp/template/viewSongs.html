@@ -1,0 +1,43 @@
+
+<div class="container">
+	<div class="header row">
+		<span class="btn" ng-controller="editSongsController" ui-sref="editSongs({albumId:{{albumId}}})"><label class="fa fa-2x fa-plus-circle"
+			style="margin-left: 20px; position: relative;" name="{{albumName}}">Add</label></span> <span
+			class="col-xs-offset-4"><label>{{albumName}}</label></span> <span
+			class="btn" style="right: 8%; position: fixed;"><label
+			class="fa fa-2x fa-search" ng-click="hideSearch = !hideSearch">Search</label></span>
+	</div>
+	<div ng-hide="!hideSearch">
+		<input type="text" class="form-control ng-pristine ng-valid"
+			ng-model="searchKeyword">
+	</div>
+	<div class="body"
+		ng-repeat="objectItem in songsData | filter: searchKeyword ">
+		<div class="row flex">
+			<div
+				class="col-xs-offset-0 col-xs-2 col-sm-offset-0 col-sm-2 col-md-offset-0 col-md-2 col-lg-offset-0 col-lg-2">
+				<img src="./image/default.png" alt="..." class="img-responsive" />
+			</div>
+			<div class="col-xs-6  col-sm-6 col-md-6 col-lg-6">
+				<div class="row full-height" ng-controller="songsController">
+					<div class="full-height" id="{{objectItem.songid}}"
+						ng-click="editSong($event)">
+						<h4 class="nomargin">{{objectItem.title}}</h4>
+						<label>{{objectItem.genre}}</label><br /><label>{{objectItem.trackNumber}}</label> <label>{{objectItem.length}}</label><br />
+						<label>{{objectItem.datecreated}}</label><label>{{objectItem.datemodified}}</label>
+					</div>
+				</div>
+			</div>
+			<div class="col-xs-offset-2" ui-sref="editSongs({albumId:{{albumId}}})" ng-click="setSongDetails($event)" title="{{objectItem.songid}}" ng-controller="editSongsController">
+			<span
+				class="btn">
+				<label style="right:10px;color:#337ab7" title="{{objectItem.songid}}" class="fa fa-edit">Edit</label>
+			</span>
+			</div>
+		</div>
+	</div>
+	<div class="footer row">
+		<div class="col-xs-5 col-md-5 col-lg-5"></div>
+		<div class="col-xs-7 col-md-7 col-lg-7"></div>
+	</div>
+</div>

@@ -1,0 +1,26 @@
+
+<div class="container">
+
+	<div class="header row" style="text-align:center">
+		<div >{{artistname}}</div>
+	</div>
+	<div class="body" ng-repeat="objectItem in objectData">
+		<div class="row flex">
+			<div
+				class="col-xs-offset-0 col-xs-2 col-sm-offset-0 col-sm-2 col-md-offset-0 col-md-2 col-lg-offset-0 col-lg-2">
+				<img src="./image/defaultalbum.png" alt="..." class="img-responsive" />
+			</div>
+			<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+				<div ng-controller="songsController" class="row full-height" id="{{objectItem.ablumid}}" ng-click="setData($event)" ui-sref="songs({albumId:objectItem.ablumid})" >
+					<div class="full-height" >
+						<h4 class="nomargin" id="{{objectItem.ablumid}}">{{objectItem.title}}</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="footer row">
+		<div class="col-xs-5 col-md-5 col-lg-5"></div>
+		<div class="col-xs-7 col-md-7 col-lg-7"></div>
+	</div>
+</div>
