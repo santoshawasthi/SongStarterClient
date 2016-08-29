@@ -1,5 +1,9 @@
 angular.module('directory.controllers', ['ui.bootstrap'])
 
+musicApp.factory('MusicCache', function ($cacheFactory) {
+    return $cacheFactory('musicCache');
+});
+
 musicApp.controller('albumController', [
 		'$scope',
 		'$http',
@@ -10,7 +14,7 @@ musicApp.controller('albumController', [
 			$scope.objectData = [];
 
 			$scope.getAlbumList = function() {
-				$http.get('http://localhost:8081/music/album/getAll').success(
+				$http.get(serverUrl+"/album/getAll",{ cache: true}).success(
 						function(jsonData, status, headers, config) {
 							$scope.objectData = jsonData.artist.album;
 							$scope.artistname = jsonData.artist.artistname;
@@ -38,9 +42,9 @@ musicApp
 						'$http',
 						'$location',
 						'$rootScope',
-						'$stateParams',
+						'$stateParams','$cacheFactory',
 						function($scope, $http, $location, $rootScope,
-								$stateParams) {
+								$stateParams,$cacheFactory) {
 							$scope.editSongs = [];
 							$scope.song = [];
 							$scope.hideSearch = false;
@@ -62,11 +66,16 @@ musicApp
 								$rootScope.songDetail = null;
 							}
 							
+							$scope.$back = function() {
+								window.history.back();
+							}
+							
 							$scope.submit = function() {
 								var config = {
 									headers : {
 										'Content-Type' : 'application/json;charset=utf-8;'
-									}
+									},
+									cache:false
 								}
 								var data = '{';
 								if($scope.song.songid!=null && $scope.song.songid!=undefined){
@@ -84,7 +93,7 @@ musicApp
 										+ songDateModified.value + '","img":"default.png"}';
 								$http
 										.post(
-												'http://localhost:8081/music/song/submit',
+												serverUrl+'/song/submit',
 												data, config)
 										.success(
 												function(data, status, headers,
@@ -98,6 +107,8 @@ musicApp
 													}(window.alert, window.jQuery);
 
 													$(window).on("Okbutton", function() {
+														var httpCache = $cacheFactory.get('$http');
+														httpCache.remove(serverUrl+'/song/getByalbumid/'+$scope.albumId); 
 														window.history.back();
 													});
 													alert(data.msg);
@@ -167,11 +178,16 @@ musicApp.controller('songsController', [
 		function($rootScope, $scope, $http, $location, $state, $stateParams,$filter) {
 			$scope.songsData = [];
 
+			$scope.$back = function() {
+				window.history.back();
+			}
+			
 			$scope.getSongsList = function(id) {
+				
 				$http
 						.get(
-								'http://localhost:8081/music/song/getByalbumid/'
-										+ id).success(
+								serverUrl+'/song/getByalbumid/'
+										+ id,{ cache: true}).success(
 								function(data, status, headers, config) {
 									$scope.songsData = data;
 									$scope.albumName = $rootScope.albumName;

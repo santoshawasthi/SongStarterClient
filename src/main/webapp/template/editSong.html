@@ -1,9 +1,10 @@
 <div class="container">
 	<div class="header row">
-		<div class="col-xs-offset-5">Song</div>
+		<input type="image" src="image/back.png" class="button button-clear buttonNextPrev" ng-click="$back()" id="back" style="margin-left:10px;"/>
+		<lavel class="col-xs-offset-5">Song</lavel>
 	</div>
 	<div>
-		<form name="editSong" class="" form-manager ng-submit="submitForm()">
+		<form name="editSong" class="row-margin" form-manager ng-submit="submitForm()">
 			<input type="hidden" ng-model="song.songid" id="songid" value="{{song.songid}}"/>
 			<div class="row">
 

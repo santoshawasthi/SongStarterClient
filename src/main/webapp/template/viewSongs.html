@@ -2,9 +2,9 @@
 <div class="container">
 	<div class="header row">
 		<span class="btn" ng-controller="editSongsController" ui-sref="editSongs({albumId:{{albumId}}})"><label class="fa fa-2x fa-plus-circle"
-			style="margin-left: 20px; position: relative;" name="{{albumName}}">Add</label></span> <span
-			class="col-xs-offset-4"><label>{{albumName}}</label></span> <span
-			class="btn" style="right: 8%; position: fixed;"><label
+			style="margin-left: 20px;" name="{{albumName}}">Add</label></span> <span
+			class="col-xs-offset-4"><a href="" style="color:#fff" ng-click="$back()">{{albumName}}</a></span> <span
+			class="btn col-xs-offset-3" style="position:relative"><label
 			class="fa fa-2x fa-search" ng-click="hideSearch = !hideSearch">Search</label></span>
 	</div>
 	<div ng-hide="!hideSearch">

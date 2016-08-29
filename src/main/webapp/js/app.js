@@ -1,5 +1,6 @@
 //var musicApp = angular.module('musicApp', []);
  var musicApp = angular.module('musicApp', ['ui.router']);
+ var serverUrl="http://localhost:8081/music";
  musicApp.config(function($stateProvider, $urlRouterProvider) {
 
  $stateProvider
