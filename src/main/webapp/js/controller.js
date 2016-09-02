@@ -55,14 +55,15 @@ musicApp
 							}
 							if($rootScope.songDetail != null
 									&& $rootScope.songDetail != undefined){
-								$scope.songDetail = $rootScope.songDetail;
-								$scope.song.title= $scope.songDetail.title;
-								$scope.song.tracknumber= $scope.songDetail.tracknumber;
-								$scope.song.length= $scope.songDetail.length;
-								$scope.song.genre= $scope.songDetail.genre;
-								$scope.song.datecreated= $scope.songDetail.datecreated;
-								$scope.song.datemodified= $scope.songDetail.datemodified;
-								$scope.song.songid= $scope.songDetail.songid;
+								$scope.song=$rootScope.songDetail;
+//								$scope.songDetail = $rootScope.songDetail;
+//								$scope.song.title= $scope.songDetail.title;
+//								$scope.song.tracknumber= $scope.songDetail.tracknumber;
+//								$scope.song.length= $scope.songDetail.length;
+//								$scope.song.genre= $scope.songDetail.genre;
+//								$scope.song.datecreated= $scope.songDetail.datecreated;
+//								$scope.song.datemodified= $scope.songDetail.datemodified;
+//								$scope.song.songid= $scope.songDetail.songid;
 								$rootScope.songDetail = null;
 							}
 							
