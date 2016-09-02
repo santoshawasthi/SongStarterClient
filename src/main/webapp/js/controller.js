@@ -3,7 +3,7 @@ angular.module('directory.controllers', ['ui.bootstrap'])
 musicApp.factory('MusicCache', function ($cacheFactory) {
     return $cacheFactory('musicCache');
 });
-
+var serverUrl = "http://ec2-52-40-207-119.us-west-2.compute.amazonaws.com:8080/music";
 musicApp.controller('albumController', [
 		'$scope',
 		'$http',
@@ -55,15 +55,15 @@ musicApp
 							}
 							if($rootScope.songDetail != null
 									&& $rootScope.songDetail != undefined){
-								$scope.song=$rootScope.songDetail;
-//								$scope.songDetail = $rootScope.songDetail;
-//								$scope.song.title= $scope.songDetail.title;
-//								$scope.song.tracknumber= $scope.songDetail.tracknumber;
-//								$scope.song.length= $scope.songDetail.length;
-//								$scope.song.genre= $scope.songDetail.genre;
-//								$scope.song.datecreated= $scope.songDetail.datecreated;
-//								$scope.song.datemodified= $scope.songDetail.datemodified;
-//								$scope.song.songid= $scope.songDetail.songid;
+								//$scope.song=$rootScope.songDetail;
+								$scope.songDetail = $rootScope.songDetail;
+								$scope.song.title= $scope.songDetail.title;
+								$scope.song.tracknumber= $scope.songDetail.tracknumber;
+								$scope.song.length= $scope.songDetail.length;
+								$scope.song.genre= $scope.songDetail.genre;
+								$scope.song.datecreated= $scope.songDetail.datecreated;
+								$scope.song.datemodified= $scope.songDetail.datemodified;
+								$scope.song.songid= $scope.songDetail.songid;
 								$rootScope.songDetail = null;
 							}
 							
